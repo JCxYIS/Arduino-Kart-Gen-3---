@@ -25,7 +25,6 @@ void BlueToothHandler()
     char val = Serial.read();
     BT.print(val);
   }
-
   // 若收到藍牙模組的資料，則送到「序列埠監控視窗」
   if (BT.available())
   {
