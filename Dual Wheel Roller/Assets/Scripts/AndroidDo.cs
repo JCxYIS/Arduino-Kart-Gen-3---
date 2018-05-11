@@ -7,7 +7,7 @@ public class AndroidDo : AndroidBehaviour<AndroidDo>
     protected override string javaClassName
     {
         //要呼叫的class所在的Package名稱.要呼叫的java class名稱
-        get { return "jcxyis.dualwheelroller.ForUnity"; }
+        get { return "JCxYIS.KartGen3Lib.activity"; }
     }
 
     /// <summary>
