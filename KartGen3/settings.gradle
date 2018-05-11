@@ -1,1 +1,1 @@
-include ':app', ':kartgen3lib'
+include ':app', ':KartG3Lib'
