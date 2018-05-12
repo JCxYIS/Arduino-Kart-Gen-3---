@@ -15,7 +15,7 @@ public class TestSceneManager : MonoBehaviour {
 	public void TestAddNum()
 	{
 		int i = AndroidDo.GetInstance().AddNum();
-		Debug.Log("GET i is now"+i);
+		Debug.Log("GET i is now "+i);
 	}
 	public void TestToastQuest()
 	{

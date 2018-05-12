@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c7bab62ecc002424ebfe6116b3ca5a67
+timeCreated: 1520747569
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DSEG7 Modern
+  fontNames:
+  - DSEG7 Modern
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

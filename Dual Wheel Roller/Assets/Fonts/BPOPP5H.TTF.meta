@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a7527f2b1b1646b4391f3b9bafd8ffe1
+timeCreated: 1521560393
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: AR PTianNiu Heavy B5
+  fontNames:
+  - AR PTianNiu Heavy B5
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="C:\Users\jsn81\Documents\Arduino\Kart_gen3_ForCompetition\KartGen3\kartgen3lib\src\main\shaders"/></dataSet><dataSet config="debug"><source path="C:\Users\jsn81\Documents\Arduino\Kart_gen3_ForCompetition\KartGen3\kartgen3lib\src\debug\shaders"/></dataSet></merger>

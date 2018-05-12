@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\jsn81\\Documents\\Arduino\\Kart_gen3_ForCompetition\\KartGen3\\kartgen3lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\jsn81\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\2828a4fd17397aee99d1bf8e3fc68180\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\jsn81\\Documents\\Arduino\\Kart_gen3_ForCompetition\\KartGen3\\kartgen3lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\jsn81\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\2828a4fd17397aee99d1bf8e3fc68180\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\jsn81\\Documents\\Arduino\\Kart_gen3_ForCompetition\\KartGen3\\kartgen3lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\jsn81\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\2828a4fd17397aee99d1bf8e3fc68180\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\jsn81\\Documents\\Arduino\\Kart_gen3_ForCompetition\\KartGen3\\kartgen3lib\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\jsn81\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\2828a4fd17397aee99d1bf8e3fc68180\\res\\layout-v21\\notification_template_icon_group.xml"
+    }
+]

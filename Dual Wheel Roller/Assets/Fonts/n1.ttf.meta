@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e80c32edecca82743b45d84177f94a4b
+timeCreated: 1521381251
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ammys Handwriting
+  fontNames:
+  - Ammys Handwriting
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
