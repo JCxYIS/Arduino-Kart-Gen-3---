@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour {
@@ -38,4 +39,21 @@ public class MainManager : MonoBehaviour {
 		boostDisplay.text = ((lBoost+rBoost)/2).ToString("0.0");
 	}
 
+	public void GoMenu()
+	{
+		Debug.Log("GO Menu.");
+		StartCoroutine(SwitchToScene("Menu"));
+	}
+	IEnumerator SwitchToScene(string scene)
+	{
+		AsyncOperation async = SceneManager.LoadSceneAsync(scene);
+		Text lab = GameObject.Find("Canvas/BackToMenu/value").GetComponent<Text>();
+		//lab.color = new Color(lab.color.r, lab.color.g, lab.color.b, 1);
+		while(!async.isDone)
+		{
+			lab.text = string.Format("{0}%",async.progress);
+			yield return false;
+		}
+		yield return true;
+	}
 }
