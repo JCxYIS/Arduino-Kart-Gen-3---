@@ -9,9 +9,11 @@ import com.unity3d.player.UnityPlayer;
 import java.util.ArrayList;
 import java.util.Set;
 
+import me.aflak.bluetooth.Bluetooth;
+
 public class Act extends UnityPlayerActivity
 {
-    static public BluetoothAdapter btAdapter;
+    public Bluetooth bluetooth = new Bluetooth(this);
     static public int i = 0;
 
     static public int TestAddNum()
@@ -34,24 +36,25 @@ public class Act extends UnityPlayerActivity
         });
     }
 
-    static public void GetBluetooth()
+    public void BtTurnOnAndStartScan()
     {
-        btAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        if (!btAdapter.isEnabled())
-            btAdapter.enable();
-
+        if (!bluetooth.isEnabled())
+            bluetooth.enable();
+        bluetooth.startScanning();
     }
 
-    static public ArrayList<String> GetBlueToothDevices()
+    public boolean BtTryConnectToKart()
     {
-        Set<BluetoothDevice> pairedDevices;
-        pairedDevices = btAdapter.getBondedDevices();
-        btAdapter.()
+        bluetooth.connectToName("DualWheelRoller");
+        if(bluetooth.isConnected())
+            return true;
+        else
+            return false;
+    }
 
-        ArrayList<String> list = new ArrayList<String>();
-        for(BluetoothDevice bt : pairedDevices)
-            list.add(bt.getName());
+    public void BtSendMessage(String message)
+    {
+        bluetooth.send(message);
     }
 }
 

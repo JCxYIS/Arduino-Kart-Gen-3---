@@ -4,25 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TestSceneManager : MonoBehaviour {
+	[SerializeField]private InputField inputArea;
 
-	/// <summary>
-	/// Update is called every frame, if the MonoBehaviour is enabled.
-	/// </summary>
-	void Update()
+	public void CheckConsoleLog()
 	{
-		
+		LunarConsolePlugin.LunarConsole.Show();
 	}
 	public void TestAddNum()
 	{
-		int i = AndroidDo.GetInstance().AddNum();
+		int i = AndroidDo.instance.AddNum();
 		Debug.Log("GET i is now "+i);
 	}
 	public void TestToastQuest()
 	{
-		AndroidDo.GetInstance().makeText("Unity調用Android Studio的Java函數成功！");	
+		string x = inputArea.text;
+		if(x == ""){x = "Unity調用Android Studio的Java函數成功！";}
+		AndroidDo.instance.makeText(x);	
 	}
-	public void CheckConsoleLog()
+	public void TestOpenBt()
 	{
-		LunarConsolePlugin.LunarConsole.Show();
+		AndroidDo.instance.OpenBt();
 	}
 }

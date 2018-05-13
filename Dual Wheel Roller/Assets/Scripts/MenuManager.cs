@@ -5,8 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
-	[SerializeField]private Text tiptext;
+	[SerializeField]private Text tiptext, ver;
 
+	
+	void Start()
+	{
+		if(ver != null)
+			ver.text = GameManager.version;
+	}
 	public void GoScene(string scene)
 	{
 		Debug.Log("GO "+scene);
