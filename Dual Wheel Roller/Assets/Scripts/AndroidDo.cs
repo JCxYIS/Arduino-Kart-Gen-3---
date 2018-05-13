@@ -5,7 +5,6 @@ using UnityEngine;
 public class AndroidDo : MonoBehaviour
 {
     AndroidJavaClass jc;
-    AndroidJavaObject jo;
 
     static public AndroidDo instance{ get {return GameObject.Find("AndroidDo").GetComponent<AndroidDo>();}}
     
@@ -24,7 +23,7 @@ public class AndroidDo : MonoBehaviour
             return;
 		}
         jc = new AndroidJavaClass ("JCxYIS.KartGen3.Act");
-        jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
+        Debug.Log("Get JC.");
     }
 
     /// <summary>
@@ -48,6 +47,6 @@ public class AndroidDo : MonoBehaviour
     /// </summary>
     public void OpenBt()
     {
-        jc.Call("BtTurnOnAndStartScan");
+        jc.CallStatic("BtTurnOnAndStartScan");
     }
 }

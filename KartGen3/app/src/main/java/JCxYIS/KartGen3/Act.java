@@ -1,24 +1,27 @@
 package JCxYIS.KartGen3;
 
 import com.unity3d.player.UnityPlayerActivity;
+
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.widget.Toast;
 import com.unity3d.player.UnityPlayer;
 
 import java.util.ArrayList;
 import java.util.Set;
 
-import me.aflak.bluetooth.Bluetooth;
 
 public class Act extends UnityPlayerActivity
 {
-    public Bluetooth bluetooth = new Bluetooth(this);
+    static public BluetoothAdapter bt;
     static public int i = 0;
+
+
 
     static public int TestAddNum()
     {
-
         i += 1;
         ShowToast("i is now" + i);
         return i;
@@ -36,13 +39,15 @@ public class Act extends UnityPlayerActivity
         });
     }
 
-    public void BtTurnOnAndStartScan()
+    static public void BtTurnOnAndStartScan()
     {
-        if (!bluetooth.isEnabled())
-            bluetooth.enable();
-        bluetooth.startScanning();
+        i = 8787;
+        bt = BluetoothAdapter.getDefaultAdapter();
+        if (!bt.isEnabled())
+            bt.enable();
+        bt.startDiscovery();
     }
-
+    /*
     public boolean BtTryConnectToKart()
     {
         bluetooth.connectToName("DualWheelRoller");
@@ -56,6 +61,7 @@ public class Act extends UnityPlayerActivity
     {
         bluetooth.send(message);
     }
+    */
 }
 
 
