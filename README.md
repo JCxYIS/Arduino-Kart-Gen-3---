@@ -9,11 +9,13 @@ Dual Wheel Roller
 - 根目錄有Arduino專案檔(Kart_gen3_ForCompetition.ino)
 - Dual Wheel Roller資料夾存放Unity專案
 - KartGen3放著Android Studio的檔案 >~<
+- Builds資料夾有可安裝的apk檔
 
 ### 貢獻 ###
 想協助改進這個碗糕？你可以
-1. git Clone這專案
-2. 分支push上來(阿不分支也沒差啦，不要亂搞就好)
+1. 在上面[Issues](https://github.com/JCxYIS/Dual-Wheel-Roller/issues)的地方提報你遭遇的BUG或想法
+2. 善用git分支功能?(我也不會用哈哈)
+3. ???
 
 ### 幹話 ###
 - 既然你誠心誠意的發問了
