@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 	[SerializeField]private Text tiptext;
+
 	public void GoScene(string scene)
 	{
 		Debug.Log("GO "+scene);
@@ -16,7 +17,7 @@ public class MenuManager : MonoBehaviour {
 		AsyncOperation async = SceneManager.LoadSceneAsync(scene);
 		while(!async.isDone)
 		{
-			tiptext.text = string.Format("Now loading: {0}%",async.progress);
+			tiptext.text = string.Format("Now loading: {0}%",async.progress*100);
 			yield return false;
 		}
 		yield return true;

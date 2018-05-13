@@ -10,7 +10,18 @@ public class AndroidDo : MonoBehaviour
     
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        if(!GameObject.Find("AndroidDo"))
+		{
+			gameObject.name = "AndroidDo";
+            DontDestroyOnLoad(gameObject);
+			//Debug.Log("AndroidDo not exist! Now making.");
+		}
+		else
+		{
+			Debug.Log("AndroidDo exist! Now deleting new one.");
+            Destroy(gameObject);
+            return;
+		}
         jc = new AndroidJavaClass ("JCxYIS.KartGen3.Act");
         //jo = jc.GetStatic<AndroidJavaObject>("currentActivity");
     }
