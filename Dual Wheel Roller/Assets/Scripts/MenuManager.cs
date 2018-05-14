@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour {
 	
 	void Start()
 	{
+		AndroidDo.instance.CloseBt();
 		if(ver != null)
 			ver.text = GameManager.version;
 	}

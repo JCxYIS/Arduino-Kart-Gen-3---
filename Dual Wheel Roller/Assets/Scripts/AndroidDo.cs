@@ -43,11 +43,18 @@ public class AndroidDo : MonoBehaviour
         return i;
     }
     /// <summary>
-    /// open bt
+    /// open bt and start scan
     /// </summary>
     public void OpenBt()
     {
         jc.CallStatic("BtTurnOnAndStartScan");
+    }
+    /// <summary>
+    /// close bt
+    /// </summary>
+    public void CloseBt()
+    {
+        jc.CallStatic("BtTurnOff");
     }
     /// <summary>
     /// true: success; false: fail
@@ -55,5 +62,19 @@ public class AndroidDo : MonoBehaviour
     public bool BtTryConnectToKart()
     {
         return jc.CallStatic<bool>("BtTryConnectToKart");
+    }
+    /// <summary>
+    /// close bt
+    /// </summary>
+    public bool BtDisconnect()
+    {
+        return jc.CallStatic<bool>("BtDisconnect");
+    }
+    /// <summary>
+    /// true: success; false: fail
+    /// </summary>
+    public bool BtSendMessage()
+    {
+        return jc.CallStatic<bool>("BtSendMessage");
     }
 }

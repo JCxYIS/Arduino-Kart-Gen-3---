@@ -28,7 +28,7 @@ public class Act extends UnityPlayerActivity
     static public int TestAddNum()
     {
         i += 1;
-        ShowToast("i is now" + i);
+        ShowToast("i is now " + i);
         return i;
     }
 
@@ -51,11 +51,19 @@ public class Act extends UnityPlayerActivity
         if (!bt.isEnabled())
             bt.enable();
         bt.startDiscovery();
+        ShowToast("Bluetooth is on! Now Discovering devices!");
+    }
+    static public void BtTurnOff()
+    {
+        i = 0;
+        bt = BluetoothAdapter.getDefaultAdapter();
+        bt.disable();
+        ShowToast("Bluetooth is off!");
     }
 
     static public boolean BtTryConnectToKart()
     {
-         btKart = bt.getRemoteDevice("98:d3:32:11:0a:44");
+         btKart = bt.getRemoteDevice("98:D3:32:11:0A:44");
         UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
         try {
             btSocket = btKart.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
@@ -88,7 +96,7 @@ public class Act extends UnityPlayerActivity
         return false;
     }
 
-    static public void BtDisconnect()
+    static public boolean BtDisconnect()
     {
         if (btSocket!=null) //If the btSocket is busy
         {
@@ -96,10 +104,15 @@ public class Act extends UnityPlayerActivity
             {
                 btSocket.close(); //close connection
                 ShowToast("Successfully disconnected!");
+                return true;
             }
             catch (IOException e)
-            { ShowToast("Failed to disconnect.");}
+            {
+                ShowToast("Failed to disconnect.");
+                return false;
+            }
         }
+        return false;
     }
 
 }

@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour {
+	static public MainManager instance{get{return GameObject.Find("MainManager").GetComponent<MainManager>();}}
 	private Scrollbar LboostScrollBar, RboostScrollBar;
 	private SimpleTouchController joyStick;
-	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, joyStickValDisplay;
+	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, joyStickValDisplay, statusDisplay;
 	private float lBoost, rBoost;
 	private string usingFunc;
+	public string currentStat = "No Bluetooth";
+	//"No Bluetooth" "No Connection" "Ready"
 
 
 	// Use this for initialization
@@ -21,6 +24,7 @@ public class MainManager : MonoBehaviour {
 		LboostDisplay = GameObject.Find("Canvas/Lboost/value").GetComponent<Text>();
 		RboostDisplay = GameObject.Find("Canvas/Rboost/value").GetComponent<Text>();
 		usingFuncDisplay = GameObject.Find("Canvas/UsingFunc/value").GetComponent<Text>();
+		statusDisplay = GameObject.Find("Canvas/Status/value").GetComponent<Text>();
 		joyStick = GameObject.Find("Canvas/SimpleTouch Joystick").GetComponent<SimpleTouchController>();
 		joyStickValDisplay = GameObject.Find("Canvas/SimpleTouch Joystick/value").GetComponent<Text>();
 	}
@@ -43,6 +47,7 @@ public class MainManager : MonoBehaviour {
 		LboostDisplay.text = lBoost.ToString("0");
 		RboostDisplay.text = rBoost.ToString("0");
 		usingFuncDisplay.text = usingFunc;
+		statusDisplay.text = currentStat;
 		Vector2 joyStickMovement = joyStick.GetTouchPosition;
 		joyStickValDisplay.text = (joyStickMovement.x*100).ToString("0.0");
 		joyStickValDisplay.text += "\n" + (joyStickMovement.y*100).ToString("0.0");
@@ -83,5 +88,8 @@ public class MainManager : MonoBehaviour {
 	{
 		usingFunc = func;
 	}
-
+	public void UpdateStat(string stat)
+	{
+		currentStat = stat;
+	}
 }

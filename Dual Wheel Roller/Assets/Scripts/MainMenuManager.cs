@@ -38,9 +38,32 @@ public class MainMenuManager : MonoBehaviour {
 	public void OpenBt()
     {
         AndroidDo.instance.OpenBt();
+		MainManager.instance.UpdateStat("No Connection");
     }
 	public void TryCoonectToKart()
 	{
-		AndroidDo.instance.BtTryConnectToKart();
+		if(MainManager.instance.currentStat == "No Connection")
+		{
+			bool x = AndroidDo.instance.BtTryConnectToKart();
+			if(x)
+				MainManager.instance.UpdateStat("Ready");
+		}
+		else
+		{
+			AndroidDo.instance.makeText("Please turn on BT and make Status = No connection");
+		}
+	}
+	public void TryDisconnectToKart()
+	{
+		if(MainManager.instance.currentStat == "Ready")
+		{
+			bool x = AndroidDo.instance.BtDisconnect();
+			if(x)
+				MainManager.instance.UpdateStat("No Connection");
+		}
+		else
+		{
+			AndroidDo.instance.makeText("Only when you are ready...");
+		}
 	}
 }
