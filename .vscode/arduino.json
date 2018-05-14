@@ -1,3 +1,5 @@
 {
-    "board": "arduino:avr:uno"
+    "board": "arduino:avr:uno",
+    "port": "COM9",
+    "sketch": "Kart_gen3_ForCompetition.ino"
 }
