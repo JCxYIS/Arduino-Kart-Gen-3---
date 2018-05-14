@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour {
 	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, joyStickValDisplay, statusDisplay;
 	private float lBoost, rBoost;
 	private string usingFunc;
+	private float lastSentTime;//send message
 	public string currentStat = "No Bluetooth";
 	//"No Bluetooth" "No Connection" "Ready"
 
@@ -35,6 +36,7 @@ public class MainManager : MonoBehaviour {
 		UsingFuncBehavior();
 		CalcBoost();
 		DisplayVal();
+		SendMessage();	
 	}
 	//--------------------------------------------------------------------------------------
 	void CalcBoost()
@@ -65,6 +67,22 @@ public class MainManager : MonoBehaviour {
 				break;
 		}
 	}
+	void SendMessage()
+	{
+		if(currentStat == "Ready" && Time.time > lastSentTime + 0.2f)
+		{
+			string msg = "";
+			msg += "M";
+			if(lBoost >= 0) msg+= "+";
+			msg += (lBoost*2.55f).ToString("000");
+			if(rBoost >= 0) msg+= "+";
+			msg += (rBoost*2.55f).ToString("000");
+			msg += '\n';
+			bool ok = AndroidDo.instance.BtSendMessage(msg);
+			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
+			lastSentTime = Time.time;
+		}
+	}
 
 	public void GoMenu()
 	{
@@ -92,4 +110,5 @@ public class MainManager : MonoBehaviour {
 	{
 		currentStat = stat;
 	}
+	
 }

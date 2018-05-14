@@ -1,10 +1,11 @@
 #include <SoftwareSerial.h>
 #include <AFMotor.h> //guide: https://learn.adafruit.com/adafruit-motor-shield/af-dcmotor-class
 
-SoftwareSerial BT(10, 11); // RX | TX
-AF_DCMotor motorL(3), motorR(4); //接腳座及頻率
+SoftwareSerial BT(2, 13); // RX | TX
+AF_DCMotor motorL(1), motorR(4); //接腳座及頻率
 
 char command[20];
+int commandBuffer = 0;//income command should be written on which pos of command[]?
 int speedL = 0, speedR = 0;
 
 void setup() 
@@ -37,17 +38,22 @@ void BlueToothHandler()
     char val = Serial.read();
     BT.print(val);
   }
-  // 若收到藍牙模組的資料，則送到「序列埠監控視窗」，並加入command
+  // 若收到藍牙模組的資料，則送到「序列埠監控視窗」，並加入command。注意結尾一定要是'\n'
   if (BT.available())
   {
     int inSize = BT.available();
     for (int i = 0; i < inSize; i++)
     {
-        byte tmp = BT.read();
-        command[i] = (char)tmp;
-        Serial.print("BT Get: ");
-        Serial.print(command[i]);
+        char tmp = BT.read();
+        command[commandBuffer] = tmp;
+        if(tmp == '\n')
+          commandBuffer = 0;
+        else
+          commandBuffer += 1;
+        
+        Serial.print(tmp);
     }
+ 
   }
   
 
@@ -61,8 +67,8 @@ void CommandHandler()
     break;
 
     case 'M'://mod Motor speed, 001~205 //EX: M-048+163
-      speedL = command[2]*100 + command[3]*10 + command[4];
-      speedR = command[6]*100 + command[7]*10 + command[8];
+      speedL = ((int)command[2]-'0')*100 + ((int)command[3]-'0')*10 + ((int)command[4]-'0');
+      speedR = ((int)command[6]-'0')*100 + ((int)command[7]-'0')*10 + ((int)command[8]-'0');
       if(command[1] == '-'){speedL *= -1;}
       if(command[5] == '-'){speedR *= -1;}
     break;
@@ -92,6 +98,7 @@ void MotorMovement(int l, int r)
   }
   else
   {
+    motorL.setSpeed(0);
     motorL.run(RELEASE);
   }
   if(r < 0)
@@ -107,8 +114,10 @@ void MotorMovement(int l, int r)
   }
   else
   {
+    motorR.setSpeed(0);
     motorR.run(RELEASE);
   }
+  //Serial.print("MOTOR=");Serial.print(l);Serial.print(",");Serial.print(r);Serial.print("\n");
 }
 
 

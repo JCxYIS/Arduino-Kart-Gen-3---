@@ -8,7 +8,7 @@ public class AndroidDo : MonoBehaviour
 
     static public AndroidDo instance{ get {return GameObject.Find("AndroidDo").GetComponent<AndroidDo>();}}
     
-    void Start()
+    void Awake()
     {
         if(!GameObject.Find("AndroidDo"))
 		{
@@ -73,8 +73,8 @@ public class AndroidDo : MonoBehaviour
     /// <summary>
     /// true: success; false: fail
     /// </summary>
-    public bool BtSendMessage()
+    public bool BtSendMessage(string msg)
     {
-        return jc.CallStatic<bool>("BtSendMessage");
+        return jc.CallStatic<bool>("BtSendMessage", msg);
     }
 }
