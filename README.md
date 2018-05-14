@@ -2,8 +2,6 @@
 
 吸K嗨SCHOOL的3D列印車車「二箍輾轉」 for 2018年第一屆3D列印工程設計創作競賽
 
-# 這個連結已經過時！！請至[新連結](https://github.com/JCxYIS/Dual-Wheel-Roller)。 #
-
 ### 洋名 ###
 Dual Wheel Roller
 
