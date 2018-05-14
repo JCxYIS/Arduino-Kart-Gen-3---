@@ -71,7 +71,7 @@ public class Act extends UnityPlayerActivity
 
     }
 
-    static public boolean BtSendMessage(String message)
+    static public boolean BtSendMessage(final String message)
     {
         if (btSocket!=null)
         {

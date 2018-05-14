@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 46039060}
   - component: {fileID: 46039059}
   m_Layer: 5
-  m_Name: Text
+  m_Name: log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,8 +336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.100006, y: -32.199997}
-  m_SizeDelta: {x: -628.1, y: -55.400024}
+  m_AnchoredPosition: {x: 15.100006, y: -31.91}
+  m_SizeDelta: {x: -628.1, y: -54.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46039059
 MonoBehaviour:
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_Text: "Developer note:\nAndroid Studio is so hard!!! Damn I tried to export jar
     file so many times, it always fail. Finally I found that I'm using the latest
     Android Studio 3.2, it changed the jar path. Hell if I know!\n                            with
-    anger,\n                            J.C.  2018.5.12\n\n\nMonika was right.\nJust
-    Monika.\n\nHxppy thxughts.png"
+    anger,\n                            J.C.  2018.5.12\n\n\n\n<color=#ff4444ff>\nMonika
+    was right.\nJust Monika.\n</color>"
 --- !u!222 &46039060
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -49,4 +49,11 @@ public class AndroidDo : MonoBehaviour
     {
         jc.CallStatic("BtTurnOnAndStartScan");
     }
+    /// <summary>
+    /// true: success; false: fail
+    /// </summary>
+    public bool BtTryConnectToKart()
+    {
+        return jc.CallStatic<bool>("BtTryConnectToKart");
+    }
 }

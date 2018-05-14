@@ -83,4 +83,5 @@ public class MainManager : MonoBehaviour {
 	{
 		usingFunc = func;
 	}
+
 }

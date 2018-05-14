@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TestSceneManager : MonoBehaviour {
 	[SerializeField]private InputField inputArea;
+	
 
 	public void CheckConsoleLog()
 	{
