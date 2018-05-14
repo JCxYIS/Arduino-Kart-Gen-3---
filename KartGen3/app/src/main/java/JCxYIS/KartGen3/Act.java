@@ -5,18 +5,23 @@ import com.unity3d.player.UnityPlayerActivity;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.widget.Toast;
 import com.unity3d.player.UnityPlayer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.UUID;
 
 
 public class Act extends UnityPlayerActivity
 {
     static public BluetoothAdapter bt;
     static public int i = 0;
+    static public BluetoothDevice btKart;
+    static public BluetoothSocket btSocket;
 
 
 
@@ -47,21 +52,56 @@ public class Act extends UnityPlayerActivity
             bt.enable();
         bt.startDiscovery();
     }
-    /*
-    public boolean BtTryConnectToKart()
+
+    static public boolean BtTryConnectToKart()
     {
-        bluetooth.connectToName("DualWheelRoller");
-        if(bluetooth.isConnected())
+         btKart = bt.getRemoteDevice("98:d3:32:11:0a:44");
+        UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+        try {
+            btSocket = btKart.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
+            bt.cancelDiscovery();
+            btSocket.connect();//start connection
+            ShowToast("Successfully Connect to kart!");
             return true;
-        else
+        }catch (IOException e) {
+            bt.startDiscovery();
+            ShowToast("Failed to connect to kart!");
             return false;
+        }
+
     }
 
-    public void BtSendMessage(String message)
+    static public boolean BtSendMessage(String message)
     {
-        bluetooth.send(message);
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write(message.getBytes());
+                return true;
+            }
+            catch (IOException e)
+            {
+                return false;
+            }
+        }
+        return false;
     }
-    */
+
+    static public void BtDisconnect()
+    {
+        if (btSocket!=null) //If the btSocket is busy
+        {
+            try
+            {
+                btSocket.close(); //close connection
+                ShowToast("Successfully disconnected!");
+            }
+            catch (IOException e)
+            { ShowToast("Failed to disconnect.");}
+        }
+    }
+
 }
 
 
