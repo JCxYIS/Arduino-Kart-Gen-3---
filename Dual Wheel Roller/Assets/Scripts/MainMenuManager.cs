@@ -46,7 +46,10 @@ public class MainMenuManager : MonoBehaviour {
 		{
 			bool x = AndroidDo.instance.BtTryConnectToKart();
 			if(x)
+			{
 				MainManager.instance.UpdateStat("Ready");
+				ToggleMenu();
+			}
 		}
 		else
 		{

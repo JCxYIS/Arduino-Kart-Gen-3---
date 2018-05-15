@@ -5,8 +5,8 @@
 ### 洋名 ###
 Dual Wheel Roller
 
-### 載點 ###
-[這裡](https://github.com/JCxYIS/Dual-Wheel-Roller/blob/master/Builds/Dual_Wheel_Roller.apk?raw=true)
+### apk載點 ###
+[看這裡](https://github.com/JCxYIS/Dual-Wheel-Roller/releases)
 
 ### 檔案說明 ###
 - 根目錄有[Arduino專案檔](https://github.com/JCxYIS/Dual-Wheel-Roller/blob/master/Kart_gen3_ForCompetition.ino)
@@ -18,7 +18,7 @@ Dual Wheel Roller
 想協助改進這個碗糕？你可以
 1. 在上面[Issues](https://github.com/JCxYIS/Dual-Wheel-Roller/issues)的地方提報你遭遇的BUG或想法
 2. 善用git分支功能?(我也不會用哈哈)
-3. ???
+3. mail[我](mailto:jsn811@gmail.com)
 
 ### 幹話 ###
 - 既然你誠心誠意的發問了
