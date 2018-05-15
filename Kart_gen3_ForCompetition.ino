@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #include <AFMotor.h> //guide: https://learn.adafruit.com/adafruit-motor-shield/af-dcmotor-class
 
-SoftwareSerial BT(2, 13); // RX | TX
+SoftwareSerial BT(2, 13); // RX | TX , (2,13) are not used by motor shield
 AF_DCMotor motorL(1), motorR(4); //接腳座及頻率
 
 char command[20];
