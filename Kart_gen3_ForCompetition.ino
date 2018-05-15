@@ -25,7 +25,6 @@ void setup()
 void loop() 
 {
   BlueToothHandler();
-  CommandHandler();
   MotorMovement(speedL, speedR);
 }
 
@@ -46,8 +45,11 @@ void BlueToothHandler()
     {
         char tmp = BT.read();
         command[commandBuffer] = tmp;
-        if(tmp == '\n')
+        if(tmp == '\n')//this command is done
+        {
           commandBuffer = 0;
+          CommandHandler();
+        }
         else
           commandBuffer += 1;
         

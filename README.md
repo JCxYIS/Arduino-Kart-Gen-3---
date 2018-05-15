@@ -6,13 +6,14 @@
 Dual Wheel Roller
 
 ### apk載點 ###
-[看這裡](https://github.com/JCxYIS/Dual-Wheel-Roller/releases)
+[看這裡](https://github.com/JCxYIS/Dual-Wheel-Roller/releases)(Release Build 較穩定版)
+或進入[Build資料夾](https://github.com/JCxYIS/Dual-Wheel-Roller/tree/master/Builds)(Night Build 測試版)
 
 ### 檔案說明 ###
 - 根目錄有[Arduino專案檔](https://github.com/JCxYIS/Dual-Wheel-Roller/blob/master/Kart_gen3_ForCompetition.ino)
 - [Dual Wheel Roller](https://github.com/JCxYIS/Dual-Wheel-Roller/tree/master/Dual%20Wheel%20Roller)資料夾存放Unity專案
 - [KartGen3](https://github.com/JCxYIS/Dual-Wheel-Roller/tree/master/KartGen3)放著Android Studio的檔案 >~<
-- [Builds](https://github.com/JCxYIS/Dual-Wheel-Roller/tree/master/Builds)資料夾有可安裝的apk檔
+- [Builds](https://github.com/JCxYIS/Dual-Wheel-Roller/tree/master/Builds)資料夾有可安裝的apk(Night build)檔
 
 ### 貢獻 ###
 想協助改進這個碗糕？你可以
