@@ -1,12 +1,15 @@
 #include <SoftwareSerial.h>
 #include <AFMotor.h> //guide: https://learn.adafruit.com/adafruit-motor-shield/af-dcmotor-class
+#include <Servo.h>
 
 SoftwareSerial BT(2, 13); // RX | TX , (2,13) are not used by motor shield
 AF_DCMotor motorL(1), motorR(4); //接腳座及頻率
+Servo servo;
 
 char command[20];
 int commandBuffer = 0;//income command should be written on which pos of command[]?
 int speedL = 0, speedR = 0;
+int servoAngle = 0;
 
 void setup() 
 {
@@ -14,6 +17,7 @@ void setup()
   Serial.println("BT(Bluetooth) is ready! type AT to set func:");
 
   BT.begin(9600);// 設定藍牙模組的連線速率
+  servo.attach(9);
   command[0] = ' ';
 
   motorL.setSpeed(0);    //可調轉速約150~到255
@@ -74,6 +78,12 @@ void CommandHandler()
       if(command[1] == '-'){speedL *= -1;}
       if(command[5] == '-'){speedR *= -1;}
     break;
+
+    case 'S': //set servo angle  //EX: S+152
+      servoAngle = ((int)command[2]-'0')*100 + ((int)command[3]-'0')*10 + ((int)command[4]-'0');
+      servo.write(servoAngle);
+      break;
+      
 
     default:
       Serial.println("CommandNotSupportError: Doesn't support this function!");

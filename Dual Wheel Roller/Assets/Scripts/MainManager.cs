@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour {
 	static public MainManager instance{get{return GameObject.Find("MainManager").GetComponent<MainManager>();}}
-	private Scrollbar LboostScrollBar, RboostScrollBar;
+	private Scrollbar LboostScrollBar, RboostScrollBar, servoScrollBar;
 	private SimpleTouchController joyStick;
-	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, joyStickValDisplay, statusDisplay;
-	private float lBoost, rBoost;
+	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, joyStickValDisplay, statusDisplay, servoDisplay;
+	private float lBoost, rBoost, servo;
 	private string usingFunc;
 	private float lastSentTime;//send message
 	public string currentStat = "No Bluetooth";
@@ -22,8 +22,10 @@ public class MainManager : MonoBehaviour {
 		Resources.UnloadUnusedAssets();
 		LboostScrollBar = GameObject.Find("Canvas/Lboost").GetComponent<Scrollbar>();
 		RboostScrollBar = GameObject.Find("Canvas/Rboost").GetComponent<Scrollbar>();
+		servoScrollBar = GameObject.Find("Canvas/Servo").GetComponent<Scrollbar>();
 		LboostDisplay = GameObject.Find("Canvas/Lboost/value").GetComponent<Text>();
 		RboostDisplay = GameObject.Find("Canvas/Rboost/value").GetComponent<Text>();
+		servoDisplay = GameObject.Find("Canvas/Servo/value").GetComponent<Text>();
 		usingFuncDisplay = GameObject.Find("Canvas/UsingFunc/value").GetComponent<Text>();
 		statusDisplay = GameObject.Find("Canvas/Status/value").GetComponent<Text>();
 		joyStick = GameObject.Find("Canvas/SimpleTouch Joystick").GetComponent<SimpleTouchController>();
@@ -43,11 +45,13 @@ public class MainManager : MonoBehaviour {
 	{
 		lBoost = (LboostScrollBar.value - 0.5f)*200;
 		rBoost = (RboostScrollBar.value - 0.5f)*200;
+		servo = servoScrollBar.value * 180;
 	}
 	void DisplayVal()
 	{
 		LboostDisplay.text = lBoost.ToString("0");
 		RboostDisplay.text = rBoost.ToString("0");
+		servoDisplay.text = servo.ToString("0");
 		usingFuncDisplay.text = usingFunc;
 		statusDisplay.text = currentStat;
 		Vector2 joyStickMovement = joyStick.GetTouchPosition;
@@ -65,12 +69,14 @@ public class MainManager : MonoBehaviour {
 				break;
 			case "BoostBar":
 				break;
+			case "ServoBar":
+				break;
 		}
 	}
 	void SendMessage()
-	{
+	{	
 		if(currentStat == "Ready" && Time.time > lastSentTime + 0.2f)
-		{
+		{//MOTOR
 			string msg = "";
 			msg += "M";
 			if(lBoost >= 0) msg+= "+";
@@ -81,6 +87,16 @@ public class MainManager : MonoBehaviour {
 			bool ok = AndroidDo.instance.BtSendMessage(msg);
 			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
 			lastSentTime = Time.time;
+		}
+		else if(currentStat == "Ready" && Time.time > lastSentTime + 0.1f)
+		{
+			string msg = "";
+			msg += "S+";
+			if(lBoost >= 0) msg+= "+";
+			msg += servo.ToString("000");
+			msg += '\n';
+			bool ok = AndroidDo.instance.BtSendMessage(msg);
+			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
 		}
 	}
 
