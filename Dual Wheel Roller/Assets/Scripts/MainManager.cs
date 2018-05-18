@@ -92,7 +92,6 @@ public class MainManager : MonoBehaviour {
 		{
 			string msg = "";
 			msg += "S+";
-			if(lBoost >= 0) msg+= "+";
 			msg += servo.ToString("000");
 			msg += '\n';
 			bool ok = AndroidDo.instance.BtSendMessage(msg);
