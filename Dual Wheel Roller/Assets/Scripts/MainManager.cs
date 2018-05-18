@@ -12,6 +12,7 @@ public class MainManager : MonoBehaviour {
 	private float lBoost, rBoost, servo;
 	private string usingFunc;
 	private float lastSentTime;//send message
+	private bool shouldSendServo;//send servo message
 	public string currentStat = "No Bluetooth";
 	//"No Bluetooth" "No Connection" "Ready"
 
@@ -87,8 +88,10 @@ public class MainManager : MonoBehaviour {
 			bool ok = AndroidDo.instance.BtSendMessage(msg);
 			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
 			lastSentTime = Time.time;
+			shouldSendServo = true;
 		}
-		else if(currentStat == "Ready" && Time.time > lastSentTime + 0.1f)
+		
+		if(shouldSendServo)
 		{
 			string msg = "";
 			msg += "S+";
@@ -96,6 +99,7 @@ public class MainManager : MonoBehaviour {
 			msg += '\n';
 			bool ok = AndroidDo.instance.BtSendMessage(msg);
 			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
+			shouldSendServo = false;
 		}
 	}
 

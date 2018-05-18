@@ -17,7 +17,7 @@ void setup()
   Serial.println("BT(Bluetooth) is ready! type AT to set func:");
 
   BT.begin(9600);// 設定藍牙模組的連線速率
-  servo.attach(9);
+  servo.attach(10);
   command[0] = ' ';
 
   motorL.setSpeed(0);    //可調轉速約150~到255
@@ -30,6 +30,7 @@ void loop()
 {
   BlueToothHandler();
   MotorMovement(speedL, speedR);
+  ServoBehavior();
 }
 
 //這裡處理藍芽事宜
