@@ -9,7 +9,7 @@ Servo servo;
 char command[20];
 int commandBuffer = 0;//income command should be written on which pos of command[]?
 int speedL = 0, speedR = 0;
-int servoAngle = 0;
+int servoAngle = 0, servoPreAngle = 0;
 
 void setup() 
 {
@@ -81,7 +81,6 @@ void CommandHandler()
 
     case 'S': //set servo angle  //EX: S+152
       servoAngle = ((int)command[2]-'0')*100 + ((int)command[3]-'0')*10 + ((int)command[4]-'0');
-      servo.write(servoAngle);
       break;
       
 
@@ -130,6 +129,15 @@ void MotorMovement(int l, int r)
     motorR.run(RELEASE);
   }
   //Serial.print("MOTOR=");Serial.print(l);Serial.print(",");Serial.print(r);Serial.print("\n");
+}
+
+void ServoBehavior()
+{
+  if(servoAngle != servoPreAngle)
+  {
+    servo.write(servoAngle);
+    servoPreAngle = servoAngle;
+  }
 }
 
 

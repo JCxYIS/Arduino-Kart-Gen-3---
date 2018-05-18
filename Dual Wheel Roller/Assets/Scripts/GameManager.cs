@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-	static public string version = "V.3.0";
+	static public string version = "V.3.0.2";
 }
