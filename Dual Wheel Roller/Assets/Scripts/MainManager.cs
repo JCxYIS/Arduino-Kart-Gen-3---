@@ -49,7 +49,7 @@ public class MainManager : MonoBehaviour {
 	{
 		lBoost = (LboostScrollBar.value - 0.5f)*scale*2;
 		rBoost = (RboostScrollBar.value - 0.5f)*scale*2;
-		servo = servoScrollBar.value * 150;
+		servo = 150 - servoScrollBar.value * 150;
 		scale = scaleScrollBar.value * 100;
 	}
 	void DisplayVal()
@@ -134,6 +134,14 @@ public class MainManager : MonoBehaviour {
 		LboostScrollBar.value = Mathf.Lerp(LboostScrollBar.value, l, 0.35f);
 		RboostScrollBar.value = Mathf.Lerp(RboostScrollBar.value, r, 0.35f);
 		//Debug.Log(LboostScrollBar.value + RboostScrollBar.value);
+	}
+	public void ResetLBoostBar()
+	{
+		LboostScrollBar.value = 0.5f;
+	}
+	public void ResetRBoostBar()
+	{
+		RboostScrollBar.value = 0.5f;
 	}
 
 	public void GoMenu()
