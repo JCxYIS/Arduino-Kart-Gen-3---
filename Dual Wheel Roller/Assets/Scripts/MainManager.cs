@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour {
 	static public MainManager instance{get{return GameObject.Find("MainManager").GetComponent<MainManager>();}}
-	private Scrollbar LboostScrollBar, RboostScrollBar, servoScrollBar;
+	private Scrollbar LboostScrollBar, RboostScrollBar, servoScrollBar, scaleScrollBar;
 	private SimpleTouchController joyStick;
-	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, joyStickValDisplay, statusDisplay, servoDisplay;
-	private float lBoost, rBoost, servo;
+	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, statusDisplay, servoDisplay, scaleDisplay;
+	private float lBoost, rBoost, servo, scale;
 	private string usingFunc;
 	private float lastSentTime;//send message
 	private bool shouldSendServo;//send servo message
@@ -24,13 +24,14 @@ public class MainManager : MonoBehaviour {
 		LboostScrollBar = GameObject.Find("Canvas/Lboost").GetComponent<Scrollbar>();
 		RboostScrollBar = GameObject.Find("Canvas/Rboost").GetComponent<Scrollbar>();
 		servoScrollBar = GameObject.Find("Canvas/Servo").GetComponent<Scrollbar>();
+		scaleScrollBar = GameObject.Find("Canvas/Scale").GetComponent<Scrollbar>();
 		LboostDisplay = GameObject.Find("Canvas/Lboost/value").GetComponent<Text>();
 		RboostDisplay = GameObject.Find("Canvas/Rboost/value").GetComponent<Text>();
 		servoDisplay = GameObject.Find("Canvas/Servo/value").GetComponent<Text>();
+		scaleDisplay = GameObject.Find("Canvas/Scale/value").GetComponent<Text>();
 		usingFuncDisplay = GameObject.Find("Canvas/UsingFunc/value").GetComponent<Text>();
 		statusDisplay = GameObject.Find("Canvas/Status/value").GetComponent<Text>();
 		joyStick = GameObject.Find("Canvas/SimpleTouch Joystick").GetComponent<SimpleTouchController>();
-		joyStickValDisplay = GameObject.Find("Canvas/SimpleTouch Joystick/value").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -44,20 +45,20 @@ public class MainManager : MonoBehaviour {
 	//--------------------------------------------------------------------------------------
 	void CalcBoost()
 	{
-		lBoost = (LboostScrollBar.value - 0.5f)*200;
-		rBoost = (RboostScrollBar.value - 0.5f)*200;
-		servo = servoScrollBar.value * 180;
+		lBoost = (LboostScrollBar.value - 0.5f)*scale*2;
+		rBoost = (RboostScrollBar.value - 0.5f)*scale*2;
+		servo = servoScrollBar.value * 150;
+		scale = scaleScrollBar.value * 100;
 	}
 	void DisplayVal()
 	{
 		LboostDisplay.text = lBoost.ToString("0");
 		RboostDisplay.text = rBoost.ToString("0");
 		servoDisplay.text = servo.ToString("0");
+		scaleDisplay.text = scale.ToString("0");
 		usingFuncDisplay.text = usingFunc;
 		statusDisplay.text = currentStat;
 		Vector2 joyStickMovement = joyStick.GetTouchPosition;
-		joyStickValDisplay.text = (joyStickMovement.x*100).ToString("0.0");
-		joyStickValDisplay.text += "\n" + (joyStickMovement.y*100).ToString("0.0");
 	}
 	void UsingFuncBehavior()
 	{

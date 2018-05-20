@@ -44,6 +44,7 @@ public class MainMenuManager : MonoBehaviour {
 	{
 		if(MainManager.instance.currentStat == "No Connection")
 		{
+			AndroidDo.instance.makeText("Now trying connect to kart.");
 			bool x = AndroidDo.instance.BtTryConnectToKart();
 			if(x)
 			{
