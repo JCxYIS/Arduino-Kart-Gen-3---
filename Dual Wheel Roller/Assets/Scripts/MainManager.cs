@@ -13,7 +13,7 @@ public class MainManager : MonoBehaviour {
 	private string usingFunc;
 	private float lastSentTime;//send message
 	private bool shouldSendServo;//send servo message
-	public string currentStat = "No Bluetooth";
+	public string currentStat = "No Bluetooth", boostButtonStat = "null";
 	//"No Bluetooth" "No Connection" "Ready"
 
 
@@ -41,6 +41,8 @@ public class MainManager : MonoBehaviour {
 		CalcBoost();
 		DisplayVal();
 		SendMessage();	
+		if(usingFunc == "BoostButton")
+			BoostButtonBehavior(boostButtonStat);
 	}
 	//--------------------------------------------------------------------------------------
 	void CalcBoost()
@@ -108,24 +110,30 @@ public class MainManager : MonoBehaviour {
 
 	public void BoostButtonBehavior(string direction)
 	{
+		boostButtonStat = direction;
 		float l = 0.5f, r = 0.5f;
 		switch(direction)
 		{
 			case "up":
 				l = 1; r = 1;
+				if(LboostScrollBar.value<0.8f)LboostScrollBar.value=0.8f;
+				if(RboostScrollBar.value<0.8f)RboostScrollBar.value=0.8f;
 				break;
 			case "left":
-				l = 0.07f; r = 0.93f;
+				l = 0.13f; r = 0.87f;
 				break;
 			case "down":
 				l = 0; r = 0;
+				if(LboostScrollBar.value>0.2f)LboostScrollBar.value=0.2f;
+				if(RboostScrollBar.value>0.2f)RboostScrollBar.value=0.2f;
 				break;
 			case "right":
-				l = 0.93f; r = 0.07f;
+				l = 0.87f; r = 0.13f;
 				break;
 		}
-		LboostScrollBar.value = l;
-		RboostScrollBar.value = r;
+		LboostScrollBar.value = Mathf.Lerp(LboostScrollBar.value, l, 0.35f);
+		RboostScrollBar.value = Mathf.Lerp(RboostScrollBar.value, r, 0.35f);
+		//Debug.Log(LboostScrollBar.value + RboostScrollBar.value);
 	}
 
 	public void GoMenu()
