@@ -120,7 +120,7 @@ public class MainManager : MonoBehaviour {
 				if(RboostScrollBar.value<0.8f)RboostScrollBar.value=0.8f;
 				break;
 			case "left":
-				l = 0.13f; r = 0.87f;
+				l = 0f; r = 1f;
 				break;
 			case "down":
 				l = 0; r = 0;
@@ -128,7 +128,13 @@ public class MainManager : MonoBehaviour {
 				if(RboostScrollBar.value>0.2f)RboostScrollBar.value=0.2f;
 				break;
 			case "right":
-				l = 0.87f; r = 0.13f;
+				l = 1f; r = 0f;
+				break;
+			case "littleleft":
+				l = 0.4f; r = 0.6f;
+				break;
+			case "littleright":
+				l = 0.6f; r = 0.4f;
 				break;
 		}
 		LboostScrollBar.value = Mathf.Lerp(LboostScrollBar.value, l, 5f);
