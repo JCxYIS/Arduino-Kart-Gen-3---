@@ -131,8 +131,8 @@ public class MainManager : MonoBehaviour {
 				l = 0.87f; r = 0.13f;
 				break;
 		}
-		LboostScrollBar.value = Mathf.Lerp(LboostScrollBar.value, l, 0.35f);
-		RboostScrollBar.value = Mathf.Lerp(RboostScrollBar.value, r, 0.35f);
+		LboostScrollBar.value = Mathf.Lerp(LboostScrollBar.value, l, 5f);
+		RboostScrollBar.value = Mathf.Lerp(RboostScrollBar.value, r, 5f);
 		//Debug.Log(LboostScrollBar.value + RboostScrollBar.value);
 	}
 	public void ResetLBoostBar()
