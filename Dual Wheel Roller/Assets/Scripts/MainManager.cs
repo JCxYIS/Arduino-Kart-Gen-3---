@@ -73,6 +73,8 @@ public class MainManager : MonoBehaviour {
 				break;
 			case "ServoBar":
 				break;
+			case "BoostButton":
+				break;
 		}
 	}
 	void SendMessage()
@@ -102,6 +104,28 @@ public class MainManager : MonoBehaviour {
 			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
 			shouldSendServo = false;
 		}
+	}
+
+	public void BoostButtonBehavior(string direction)
+	{
+		float l = 0.5f, r = 0.5f;
+		switch(direction)
+		{
+			case "up":
+				l = 1; r = 1;
+				break;
+			case "left":
+				l = 0.07f; r = 0.93f;
+				break;
+			case "down":
+				l = 0; r = 0;
+				break;
+			case "right":
+				l = 0.93f; r = 0.07f;
+				break;
+		}
+		LboostScrollBar.value = l;
+		RboostScrollBar.value = r;
 	}
 
 	public void GoMenu()
