@@ -14,6 +14,7 @@ public class MainManager : MonoBehaviour {
 	private float lastSentTime;//send message
 	private bool shouldSendServo;//send servo message
 	public string currentStat = "No Bluetooth", boostButtonStat = "null";
+	private bool thisFramePressedBoostButt;
 	//"No Bluetooth" "No Connection" "Ready"
 
 
@@ -43,6 +44,7 @@ public class MainManager : MonoBehaviour {
 		SendMessage();	
 		if(usingFunc == "BoostButton")
 			BoostButtonBehavior(boostButtonStat);
+		thisFramePressedBoostButt = false;
 	}
 	//--------------------------------------------------------------------------------------
 	void CalcBoost()
@@ -116,16 +118,12 @@ public class MainManager : MonoBehaviour {
 		{
 			case "up":
 				l = 1; r = 1;
-				if(LboostScrollBar.value<0.8f)LboostScrollBar.value=0.8f;
-				if(RboostScrollBar.value<0.8f)RboostScrollBar.value=0.8f;
 				break;
 			case "left":
 				l = 0f; r = 1f;
 				break;
 			case "down":
 				l = 0; r = 0;
-				if(LboostScrollBar.value>0.2f)LboostScrollBar.value=0.2f;
-				if(RboostScrollBar.value>0.2f)RboostScrollBar.value=0.2f;
 				break;
 			case "right":
 				l = 1f; r = 0f;
@@ -137,8 +135,17 @@ public class MainManager : MonoBehaviour {
 				l = 0.6f; r = 0.4f;
 				break;
 		}
-		LboostScrollBar.value = Mathf.Lerp(LboostScrollBar.value, l, 5f);
-		RboostScrollBar.value = Mathf.Lerp(RboostScrollBar.value, r, 5f);
+		if(!thisFramePressedBoostButt)
+		{
+			LboostScrollBar.value = l;
+			RboostScrollBar.value = r;
+		}
+		else
+		{
+			LboostScrollBar.value = (l + LboostScrollBar.value)/2;
+			RboostScrollBar.value = (r + RboostScrollBar.value)/2;
+		}
+		thisFramePressedBoostButt = true;
 		//Debug.Log(LboostScrollBar.value + RboostScrollBar.value);
 	}
 	public void ResetLBoostBar()
