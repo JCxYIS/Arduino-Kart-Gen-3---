@@ -162,6 +162,10 @@ public class MainManager : MonoBehaviour {
 	{
 		RboostScrollBar.value = 0.5f;
 	}
+	public void ResetMBoostBar()
+	{
+		MboostScrollBar.value = 0.5f;
+	}
 
 	public void GoMenu()
 	{
