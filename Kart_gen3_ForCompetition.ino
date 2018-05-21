@@ -136,12 +136,12 @@ void MotorMovement(int l, int r, int m)
   if(m < 0)
   {
     m *= -1;
-    motorM.setSpeed(r);
+    motorM.setSpeed(m);
     motorM.run(BACKWARD);
   }
   else if(m > 0)
   {
-    motorM.setSpeed(r);
+    motorM.setSpeed(m);
     motorM.run(FORWARD);
   }
   else
