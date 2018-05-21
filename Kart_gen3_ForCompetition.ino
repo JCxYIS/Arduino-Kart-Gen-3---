@@ -81,7 +81,7 @@ void CommandHandler()
       speedM = ((int)command[10]-'0')*100 + ((int)command[11]-'0')*10 + ((int)command[12]-'0');
       if(command[1] == '-'){speedL *= -1;}
       if(command[5] == '-'){speedR *= -1;}
-      if(command[9] == '-'){speedR *= -1;}
+      if(command[9] == '-'){speedM *= -1;}//
     break;
 
     case 'S': //set servo angle  //EX: S+152
