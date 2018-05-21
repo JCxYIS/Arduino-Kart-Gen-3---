@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour {
 	static public MainManager instance{get{return GameObject.Find("MainManager").GetComponent<MainManager>();}}
-	private Scrollbar LboostScrollBar, RboostScrollBar, servoScrollBar, scaleScrollBar;
+	private Scrollbar LboostScrollBar, RboostScrollBar, MboostScrollBar, servoScrollBar, scaleScrollBar;
 	private SimpleTouchController joyStick;
-	private Text LboostDisplay, RboostDisplay, usingFuncDisplay, statusDisplay, servoDisplay, scaleDisplay;
-	private float lBoost, rBoost, servo, scale;
+	private Text LboostDisplay, RboostDisplay, MboostDisplay, usingFuncDisplay, statusDisplay, servoDisplay, scaleDisplay;
+	private float lBoost, rBoost, mBoost, servo, scale;
 	private string usingFunc;
 	private float lastSentTime;//send message
 	private bool shouldSendServo;//send servo message
@@ -24,10 +24,12 @@ public class MainManager : MonoBehaviour {
 		Resources.UnloadUnusedAssets();
 		LboostScrollBar = GameObject.Find("Canvas/Lboost").GetComponent<Scrollbar>();
 		RboostScrollBar = GameObject.Find("Canvas/Rboost").GetComponent<Scrollbar>();
+		MboostScrollBar = GameObject.Find("Canvas/Mboost").GetComponent<Scrollbar>();
 		servoScrollBar = GameObject.Find("Canvas/Servo").GetComponent<Scrollbar>();
 		scaleScrollBar = GameObject.Find("Canvas/Scale").GetComponent<Scrollbar>();
 		LboostDisplay = GameObject.Find("Canvas/Lboost/value").GetComponent<Text>();
 		RboostDisplay = GameObject.Find("Canvas/Rboost/value").GetComponent<Text>();
+		MboostDisplay = GameObject.Find("Canvas/Mboost/value").GetComponent<Text>();
 		servoDisplay = GameObject.Find("Canvas/Servo/value").GetComponent<Text>();
 		scaleDisplay = GameObject.Find("Canvas/Scale/value").GetComponent<Text>();
 		usingFuncDisplay = GameObject.Find("Canvas/UsingFunc/value").GetComponent<Text>();
@@ -51,6 +53,7 @@ public class MainManager : MonoBehaviour {
 	{
 		lBoost = (LboostScrollBar.value - 0.5f)*scale*2;
 		rBoost = (RboostScrollBar.value - 0.5f)*scale*2;
+		mBoost = (MboostScrollBar.value - 0.5f)*scale*2;
 		servo = 150 - servoScrollBar.value * 150;
 		scale = scaleScrollBar.value * 100;
 	}
@@ -58,6 +61,7 @@ public class MainManager : MonoBehaviour {
 	{
 		LboostDisplay.text = lBoost.ToString("0");
 		RboostDisplay.text = rBoost.ToString("0");
+		MboostDisplay.text = mBoost.ToString("0");
 		servoDisplay.text = servo.ToString("0");
 		scaleDisplay.text = scale.ToString("0");
 		usingFuncDisplay.text = usingFunc;
@@ -91,6 +95,8 @@ public class MainManager : MonoBehaviour {
 			msg += (lBoost*2.55f).ToString("000");
 			if(rBoost >= 0) msg+= "+";
 			msg += (rBoost*2.55f).ToString("000");
+			if(mBoost >= 0) msg+= "+";
+			msg += (mBoost*2.55f).ToString("000");
 			msg += '\n';
 			bool ok = AndroidDo.instance.BtSendMessage(msg);
 			Debug.Log( string.Format("OK?{0}, msg={1}",ok,msg) );
