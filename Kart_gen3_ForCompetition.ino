@@ -3,7 +3,7 @@
 #include <Servo.h>
 
 SoftwareSerial BT(2, 13); // RX | TX , (2,13) are not used by motor shield
-AF_DCMotor motorL(1), motorR(4); //接腳座及頻率
+AF_DCMotor motorL(1), motorR(4), motorL2(2), motorR2(3); //接腳座及頻率
 Servo servo;
 
 char command[20];
@@ -101,33 +101,44 @@ void MotorMovement(int l, int r)
   {
     l *= -1;
     motorL.setSpeed(l);
+    motorL2.setSpeed(l);
     motorL.run(BACKWARD);
+    motorL2.run(BACKWARD);
   }
   else if(l > 0)
   {
     motorL.setSpeed(l);
+    motorL2.setSpeed(l);
     motorL.run(FORWARD);
+    motorL2.run(FORWARD);
   }
   else
   {
     motorL.setSpeed(0);
+    motorL2.setSpeed(0);
     motorL.run(RELEASE);
+    motorL2.run(RELEASE);
   }
   if(r < 0)
   {
     r *= -1;
     motorR.setSpeed(r);
     motorR.run(BACKWARD);
+    motorR2.run(BACKWARD);
   }
   else if(r > 0)
   {
     motorR.setSpeed(r);
+    motorR2.setSpeed(r);
     motorR.run(FORWARD);
+    motorR2.run(FORWARD);
   }
   else
   {
     motorR.setSpeed(0);
+    motorR2.setSpeed(r);
     motorR.run(RELEASE);
+    motorR2.run(RELEASE);
   }
   //Serial.print("MOTOR=");Serial.print(l);Serial.print(",");Serial.print(r);Serial.print("\n");
 }
