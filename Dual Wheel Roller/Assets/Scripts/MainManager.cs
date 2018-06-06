@@ -21,6 +21,10 @@ public class MainManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		string dia = "Welcome to Dual Wheel Roller app, version " + GameManager.version;
+		dia += ". To complete the preparation, press Settings on the top left first.";
+		PopUpBubbleManager.CreatePop("",dia, null, false);
+		
 		Resources.UnloadUnusedAssets();
 		LboostScrollBar = GameObject.Find("Canvas/Lboost").GetComponent<Scrollbar>();
 		RboostScrollBar = GameObject.Find("Canvas/Rboost").GetComponent<Scrollbar>();

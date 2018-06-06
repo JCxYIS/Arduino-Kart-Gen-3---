@@ -1509,6 +1509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputArea: {fileID: 837841883}
+  RefusedMonika: 0
 --- !u!4 &1733277269
 Transform:
   m_ObjectHideFlags: 0

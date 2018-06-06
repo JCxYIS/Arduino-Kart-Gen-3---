@@ -50,12 +50,16 @@ public class MainMenuManager : MonoBehaviour {
 			if(x)
 			{
 				MainManager.instance.UpdateStat("Ready");
+				PopUpBubbleManager.CreatePop("","We are all set. Better start driving.", null, false);
 				ToggleMenu();
 			}
+			else
+				PopUpBubbleManager.CreatePop("","Failed to connect to the kart.", null, false);
 		}
 		else
 		{
-			AndroidDo.instance.makeText("Please turn on BT and make Status = No connection");
+			//AndroidDo.instance.makeText("Please turn on BT and make Status = No connection");
+			PopUpBubbleManager.CreatePop("","Please turn on BT (press init BT first)", null, false);
 		}
 	}
 	public void TryDisconnectToKart()
@@ -68,7 +72,7 @@ public class MainMenuManager : MonoBehaviour {
 		}
 		else
 		{
-			AndroidDo.instance.makeText("Only when you are ready...");
+			PopUpBubbleManager.CreatePop("","You are not ready to disconnect.", null, false);
 		}
 	}
 }
