@@ -13,7 +13,8 @@ public class MainMenuManager : MonoBehaviour {
 	/// </summary>
 	void Start()
 	{
-		GetComponent<Animation>().Rewind();
+		//GetComponent<Animation>().Rewind();
+		transform.position = new Vector3(-999,-999,10);
 		appName.text = "二箍輾轉 -  Dual Wheel Roller "+GameManager.version;
 	}
 
