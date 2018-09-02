@@ -1,8 +1,6 @@
-# 「二箍輾轉」 #
+# 「二箍輾轉」Dual Wheel Roller #
 吸K嗨SCHOOL的3D列印車車「二箍輾轉」 for 2018年第一屆3D列印工程設計創作競賽
 
-### 洋名 ###
-Dual Wheel Roller
 
 ### 圖標 ###
 <img src="http://jcjc.cf/Dual-Wheel-Roller/WebAsset/icon3.0.JPG" alt="icon圖" height="111" width="111">
