@@ -1,4 +1,5 @@
 # 「二箍輾轉」 #
+![icon圖](http://jcjc.cf/Duall-Wheel-Roller/WebAsset/icon3.0.JPG))
 
 吸K嗨SCHOOL的3D列印車車「二箍輾轉」 for 2018年第一屆3D列印工程設計創作競賽
 
@@ -21,3 +22,4 @@ Dual Wheel Roller
 2. 善用git分支功能?(我也不會用哈哈)
 3. mail[我](mailto:jsn811@gmail.com)
 
+![標牌圖](http://jcjc.cf/Duall-Wheel-Roller/WebAsset/avatar.png))
