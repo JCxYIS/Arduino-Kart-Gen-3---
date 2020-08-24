@@ -12,5 +12,6 @@
 
 > 「二箍輾轉」現在被放在生科教室供後人瞻仰 (大概？
 
-### Trivia
+### 圖
+![DWR](https://i.imgur.com/kENx81K.jpg)
 ![宣傳圖](https://jcxyis.github.io/Dual-Wheel-Roller/WebAsset/avatar.png)
